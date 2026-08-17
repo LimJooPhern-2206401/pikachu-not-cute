@@ -28353,7 +28353,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   handle: {fileID: 7509008427246001996}
-  defaultValue: 1
+  defaultValue: 0
   OnLeverActivate:
     m_PersistentCalls:
       m_Calls:
