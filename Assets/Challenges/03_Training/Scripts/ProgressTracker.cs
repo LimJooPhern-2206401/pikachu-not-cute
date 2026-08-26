@@ -54,44 +54,6 @@ public class ProgressTracker : MonoBehaviour
         UpdateTimerText();
     }
 
-    public void RegisterPlatformBox(Collider other)
-    {
-        if (!timerRunning || other == null)
-            return;
-
-        GameObject box = other.attachedRigidbody != null
-            ? other.attachedRigidbody.gameObject
-            : other.gameObject;
-
-        if (!box.CompareTag("Box"))
-            return;
-
-        if (!countedBoxes.Add(box))
-            return;
-
-        successfullyLifted++;
-        UpdateBoxesText();
-
-        Debug.Log(
-            $"Platform progress: {successfullyLifted}/{totalBoxes}"
-        );
-
-        if (successfullyLifted >= totalBoxes)
-        {
-            CompleteTraining();
-        }
-        else
-        {
-            PlaySuccessParticles(correctParticleCount);
-            PlayFeedbackSound(correctClip);
-
-            ShowTemporaryFeedback(
-                "BOX DELIVERED!",
-                new Color32(80, 255, 120, 255)
-            );
-        }
-    }
-    
     public void RegisterLift(SelectEnterEventArgs args)
     {
         if (!timerRunning)
