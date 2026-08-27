@@ -64,10 +64,28 @@ public class ProgressTracker : MonoBehaviour
             : other.gameObject;
 
         if (!box.CompareTag("Box"))
+        {
+            PlayFeedbackSound(incorrectClip);
+
+            ShowTemporaryFeedback(
+                "INVALID OBJECT",
+                new Color32(255, 80, 80, 255)
+            );
+
             return;
+        }
 
         if (!countedBoxes.Add(box))
+        {
+            PlayFeedbackSound(incorrectClip);
+
+            ShowTemporaryFeedback(
+                "BOX ALREADY COUNTED",
+                new Color32(255, 190, 60, 255)
+            );
+
             return;
+        }
 
         successfullyLifted++;
         UpdateBoxesText();
